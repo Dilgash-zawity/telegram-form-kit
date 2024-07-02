@@ -29,7 +29,7 @@
       email = '';
       message = '';
 
-      goto('/');
+      goto('');
     } catch (error) {
       alert('Failed to send message. Please try again later.');
       console.error(error);
