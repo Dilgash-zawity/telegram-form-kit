@@ -30,22 +30,22 @@ Follow these steps to set up and start the project:
 
 - Telegram Bot Token:
 
-    1. Open Telegram and search for the BotFather user.
-    2. Start a chat with BotFather.
-    3. Use the /newbot command to create a new bot and follow the instructions.
-    4. Once your bot is created, BotFather will provide you with a bot token. Copy this token.
+    - Open Telegram and search for the BotFather user.
+    - Start a chat with BotFather.
+    - Use the /newbot command to create a new bot and follow the instructions.
+    - Once your bot is created, BotFather will provide you with a bot token. Copy this token.
 
     <br/>
 
 - Telegram Chat ID:
 
-    1. Start a chat with your newly created bot.
-    2. Send a message to your bot.
-    3. Open a web browser and go to the following URL, replacing <bot_token> with your bot's token:
+    - Start a chat with your newly created bot.
+    - Send a message to your bot.
+    - Open a web browser and go to the following URL, replacing <bot_token> with your bot's token:
     ```
     https://api.telegram.org/bot<bot_token>/getUpdates
     ```
-    4. Look for the chat object within the JSON response. Find the id field, which represents your chat ID. Copy this chat ID.
+    - Look for the chat object within the JSON response. Find the id field, which represents your chat ID. Copy this chat ID.
 
     <br/>
 
