@@ -1,46 +1,56 @@
-# telegram bot kit
+<!-- # Project Setup Guide
+<br/>
+
+## Clone the Git Repository
+
+```bash
+git clone https://github.com/Dilgash-zawity/telegram-form-kit.git
+cd telegram-form-git
+```
+<br/>
+
+## Set Up Environment Variables
+Rename .env.example to .env:
+
+
+```env
+VITE_BOT_TOKEN=your_bot_token_here
+VITE_CHAT_ID=your_chat_id_here
+``` -->
+
+
+
+# telegram form kit
+
+Follow these steps to set up and start the project:
+
+1. **Clone the Git Repository:**
+```bash
+git clone https://github.com/Dilgash-zawity/telegram-form-kit.git
+cd telegram-form-kit
+```
+
+2. **Rename `.env.example` to `.env`:**
+- Locate the `.env.example` file in the project root.
+- Rename it to `.env`.
 
 <br/>
 
-### Setting Up Your Telegram Bot
+3. **Install Dependencies and Start the Project:**
+```javascript
+npm i
+npm run dev
+```
 
 <br/>
 
-1. **Create a Telegram Bot:**
-   - Go to [BotFather](https://t.me/BotFather).
-   - Follow the instructions to create a new bot.
-   - Note down your Bot Token provided by BotFather.
-   
-   <br/>
+4. **Configure Environment Variables:**
+- Open the `.env` file and add your Telegram bot token and chat ID:
+  ```plaintext
+  VITE_BOT_TOKEN=your_bot_token_here
+  VITE_CHAT_ID=your_chat_id_here
+  ```
 
-2. **Obtain Your Chat ID:**
-   - Start a conversation with your bot.
-   - Use your bot to send a message.
-   - Retrieve your Chat ID by calling the Telegram API with your bot.
-   
-   <br/>
+Make sure to replace `your_bot_token_here` and `your_chat_id_here` with your actual Telegram bot token and chat ID.
 
-### Environment Variables
-
-<br/>
-
-1. **Configure `.env` File:**
-   - Create a `.env` file in the root directory.
-   - Add your Bot Token and Chat ID:
-     ```
-     VITE_BOT_TOKEN=your_bot_token_here
-     VITE_CHAT_ID=your_chat_id_here
-     ```
-   - Replace `your_bot_token_here` and `your_chat_id_here` with actual values.
-   
-   <br/>
-
-2. **Use `.env.example` as Reference:**
-   - Copy `.env.example` to `.env` and fill in your credentials securely.
-
-<br/>
-
-### Running the Project
-1. **Install Dependencies:**
-   ```bash
-   npm install && npm run dev
+Once you've completed these steps, your project should be set up and ready to run locally.
