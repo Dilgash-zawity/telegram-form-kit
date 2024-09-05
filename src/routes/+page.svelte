@@ -4,67 +4,81 @@
 	import { Input } from '$lib/components/ui/input/index.js';
 	import { Label } from '$lib/components/ui/label/index.js';
 	import { Textarea } from '$lib/components/ui/textarea/index.js';
-    
+	import { onMount } from 'svelte';
+	import toast, { Toaster } from 'svelte-french-toast';
 
-	import { goto } from '$app/navigation';
-	import { sendTelegramMessage } from '$lib/telegram';
+	let name = '';
+	let email = '';
+	let message = '';
+	let isLoading = false; // Track loading state
 
-    let name = '';
-  let email = '';
-  let message = '';
+	const handleSubmit = async (e: Event) => {
+		e.preventDefault();
+		isLoading = true; // Set loading state to true when form is submitted
 
-  async function handleSubmit(event: Event) {
-    event.preventDefault();
+		try {
+			const response = await fetch('/api/sendMessage', {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json',
+				},
+				body: JSON.stringify({ name, email, message }),
+			});
 
-    if (!name || !email || !message) {
-      alert('Please fill in all fields.');
-      return;
-    }
+			if (response.ok) {
+				toast.success('Message sent successfully!');
+				// Optionally reset the form
+				name = '';
+				email = '';
+				message = '';
+			} else {
+				toast.error('Failed to send message.');
+			}
+		} catch (error) {
+			toast.error('An error occurred while sending the message.');
+		} finally {
+			isLoading = false; // Set loading state to false after the request is finished
+		}
+	};
+</script>
 
-    try {
-      await sendTelegramMessage(name, email, message);
-      alert('Message sent successfully!');
-      
-      name = '';
-      email = '';
-      message = '';
-
-      goto('');
-    } catch (error) {
-      alert('Failed to send message. Please try again later.');
-      console.error(error);
-    }
-  }</script>
-
-<form class="fixed flex h-[100dvh] w-full items-center justify-center"  on:submit={handleSubmit}>
+<!-- Frontend form -->
+<form class="fixed flex h-[100dvh] w-full items-center justify-center" on:submit={handleSubmit}>
 	<Card.Root class="w-96">
 		<Card.Header>
-			<Card.Title>telegram bot kit form</Card.Title>
-			<Card.Description></Card.Description>
+			<Card.Title>Telegram Bot Kit Form</Card.Title>
 		</Card.Header>
 		<Card.Content class="flex flex-col gap-5">
 			<div class="flex w-full max-w-sm flex-col gap-1.5">
-				<Label for="Name">Name</Label>
-				<Input type="text" id="name" bind:value={name} placeholder="Name" required/>
+				<Label for="name">Name</Label>
+				<Input type="text" id="name" bind:value={name} placeholder="Name" required />
 				<p class="text-sm text-muted-foreground">Enter your full name.</p>
 			</div>
 
 			<div class="flex w-full max-w-sm flex-col gap-1.5">
-				<Label for="email-2">Email</Label>
-				<Input type="email" id="email" bind:value={email} placeholder="Email" required/>
+				<Label for="email">Email</Label>
+				<Input type="email" id="email" bind:value={email} placeholder="Email" required />
 				<p class="text-sm text-muted-foreground">Enter your email address.</p>
 			</div>
 
 			<div class="grid w-full gap-1.5">
-				<Label for="message-2">Your Message</Label>
-				<Textarea placeholder="Type your message here." id="message" bind:value={message} required/>
+				<Label for="message">Your Message</Label>
+				<Textarea id="message" bind:value={message} placeholder="Type your message here." required />
 			</div>
 		</Card.Content>
 		<Card.Footer>
-			<Button type="submit">submit</Button>
+			<!-- Button disabled and shows "Loading..." when isLoading is true -->
+			<Button type="submit" disabled={isLoading}>
+				{#if isLoading}
+					<!-- You can replace this text with a spinner icon if needed -->
+					<span>Loading...</span>
+				{:else}
+					<span>Submit</span>
+				{/if}
+			</Button>
 		</Card.Footer>
 	</Card.Root>
+
+	<!-- Toast notification -->
+	<Toaster />
 </form>
-
-
-   
