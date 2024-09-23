@@ -10,7 +10,6 @@ Welcome to the Telegram Form Integration repository! This project enables seamle
 
 - **Create Telegram Forms:** Simple setup for collecting user information.
 - **Easy Integration:** Connect with Telegram's API to send messages directly.
-- **Live Demo:** Check out the [live demo](https://telegram-form-kit.vercel.app/) to see it in action.
 - **Comprehensive Documentation:** Step-by-step guide on configuring and using the bot.
 
 ## Getting Started
