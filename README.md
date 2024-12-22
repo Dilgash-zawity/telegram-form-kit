@@ -1,7 +1,3 @@
-<p align="center">
-  <img src="static/favicon.png" alt="Project Logo" width="200" />
-</p>
-
 # Telegram Form Integration
 
 Welcome to the Telegram Form Integration repository! This project enables seamless integration of Telegram bot functionality into your website. Collect and manage user data through a Telegram bot with ease.
